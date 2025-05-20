@@ -11,16 +11,34 @@ export default function ProductsList() {
     const [addedProducts, setAddedProducts] = useState([]);
     console.log(addedProducts);
 
+    const updateProductQuantity = (name, quantity) => {
+        setAddedProducts(curr => curr.map(p => {
+            if (p.name === name) {
+                return {
+                    ...p,
+                    quantity
+                }
+            }
+            return p;
+        }))
+    };
 
     const addToCart = product => {
-        const pIsAdded = addedProducts.some(p => p.name === product.name);
+        const pIsAdded = addedProducts.find(p => p.name === product.name);
 
         if (pIsAdded) {
+            updateProductQuantity(pIsAdded.name, pIsAdded.quantity + 1);
             return;
         };
 
         setAddedProducts(curr => [...curr, { ...product, quantity: 1 }]);
     };
+
+    const removeFromCart = product => {
+        setAddedProducts(curr => curr.filter(p => p.name !== product.name))
+    };
+
+    const total = addedProducts.reduce((acc, p) => acc + (p.price * p.quantity), 0);
 
     return (
         <div>
@@ -50,11 +68,14 @@ export default function ProductsList() {
                                     return (
                                         <li key={i}>
                                             <p>{a.name} / {a.price.toFixed(2)} € / Quantity: {a.quantity}</p>
+                                            <button onClick={() => removeFromCart(a)}>Rimuovi dal carrello</button>
                                         </li>
                                     )
                                 })
                             }
                         </ul>
+
+                        <h3>Totale da pagare: {total.toFixed(2)} €</h3>
                     </div>
                 )
             }
