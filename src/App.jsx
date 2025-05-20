@@ -1,7 +1,9 @@
+import ProductsList from "./components/ProductsList"
+
 function App() {
   return (
     <>
-      <h1>Vite + React</h1>
+      <ProductsList />
     </>
   )
 }
