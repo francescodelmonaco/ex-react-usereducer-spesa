@@ -2,31 +2,50 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+    --blue: #050647;
+    --green: #adcb88;
+    --red: #cb9088;
+}
+
 h1,
 h2,
 h3 {
     text-align: center;
-    background-color: #050647;
+    background-color: var(--blue);
     padding: 0.5rem 0;
     border-radius: 10px;
     color: whitesmoke;
 }
 
 button {
-    background-color: orange;
-    border: 1px solid orange;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     font-weight: bold;
 }
 
+.btn-add {
+    background-color: var(--green);
+    border: 1px solid var(--green);
+}
+
+.btn-remove {
+    background-color: var(--red);
+    border: 1px solid var(--red);
+}
+
 li {
     display: flex;
     justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 1rem;
 }
 
 ul {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin: 0;
+    padding: 0;
 }

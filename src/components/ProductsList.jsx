@@ -50,7 +50,7 @@ export default function ProductsList() {
                         return (
                             <li key={i}>
                                 <p>{p.name} / {p.price.toFixed(2)} €</p>
-                                <button onClick={() => addToCart(p)}>Aggiungi al carrello</button>
+                                <button className="btn-add" onClick={() => addToCart(p)}>Aggiungi al carrello</button>
                             </li>
                         )
                     })
@@ -68,7 +68,7 @@ export default function ProductsList() {
                                     return (
                                         <li key={i}>
                                             <p>{a.name} / {a.price.toFixed(2)} € / Quantity: {a.quantity}</p>
-                                            <button onClick={() => removeFromCart(a)}>Rimuovi dal carrello</button>
+                                            <button className="btn-remove" onClick={() => removeFromCart(a)}>Rimuovi dal carrello</button>
                                         </li>
                                     )
                                 })
